@@ -37,28 +37,52 @@
     
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
-
+    const inventors1500 = inventors.filter(element => element.year >= 1500 && element.year<1600)
+    console.table(inventors1500)
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
-
+    const inventorsName = inventors.map(element => `${element.first} ${element.last}`)
+    console.log(inventorsName)
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
-
+    const inventorsByAge = inventors.sort((a,b) => a.year - b.year)
+    console.table(inventorsByAge)
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
-
+    const inventorsTotalAge = inventors.reduce((total, element) => total+= (element.passed - element.year),0)
+    console.log(inventorsTotalAge)
     // 5. Sort the inventors by years lived
-
+    const inventorsSortAge = inventors.map(element => [element.first,element.last,(element.passed - element.year)]).sort((a,b) => a[2]-b[2])
+    console.table(inventorsSortAge)
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
-
+ 
+    // const category = document.querySelector('.mw-category');
+    // const links = [...category.querySelectorAll('a')];
+    // const de = links
+    //   .map(element => element.textContent)
+    //   .filter(element => element.includes('de'));
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
 
+    const sortPeopleLast = people.map(element => element.split(', ')).sort()                         
+    console.table(sortPeopleLast)
+
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+    const vehicleInstances = data.reduce(function(a,b) {
+      if (!a[b]){
+        a[b]=0;
+      }
+      a[b]++;
+      return a;
+    }, {}) 
+
+
+
+    console.table(vehicleInstances)
 
   </script>
 </body>
